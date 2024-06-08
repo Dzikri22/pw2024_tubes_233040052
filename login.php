@@ -49,7 +49,7 @@ if (isset($_POST['cari'])) {
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body style="background-color: hsla(89, 43%, 51%, 0.3);">
+<body style="background-color: #B0C4DE;">
     
 
     

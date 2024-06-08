@@ -36,7 +36,7 @@ if (isset($_POST["submit"])) {
 
 </head>
  
-<body style="background-color: hsla(89, 43%, 51%, 0.3);">
+<body style="background-color: #483D8B;">
     
 
 
@@ -77,7 +77,7 @@ if (isset($_POST["submit"])) {
                             <label class="form-label">Gambar
                                 <input type="file" class="gambar" onchange="previewImage()" name="gambar" placeholder="Masukkan Gambar Produk">
                             </label>
-                            <img src="img/nopoto.png" width="120" class="img-preview">
+                            <img src="img/nopoto.jpg" width="120" class="img-preview">
                         </div>
                         <button type="submit" class="btn btn-dark justify-content-end" name="submit">Tambah Data</button>
                     </form>

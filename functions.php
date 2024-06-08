@@ -16,7 +16,7 @@ $result = mysqli_query($db,$sql) or die (mysqli_error($db));
     // menyiapkan data mahasiswa (fetch)
 $rows = [];
 
-while($row = mysqli_fetch_row($result)) {
+while($row = mysqli_fetch_assoc($result)) {
  $rows[] =$row;
 }
 
@@ -107,18 +107,18 @@ function cari($keywoard)
 
 function upload()
 {
-    $nama_file = $_FILES['tgambar']['name'];
-    $tipe_file = $_FILES['tgambar']['type'];
-    $ukuran_file = $_FILES['tgambar']['size'];
-    $error = $_FILES['tgambar']['error'];
-    $tmp_file = $_FILES['tgambar']['tmp_name'];
+    $nama_file = $_FILES['gambar']['name'];
+    $tipe_file = $_FILES['gambar']['type'];
+    $ukuran_file = $_FILES['gambar']['size'];
+    $error = $_FILES['gambar']['error'];
+    $tmp_file = $_FILES['gambar']['tmp_name'];
 
     // ketika tidak ada gambar yang dipilih
     if ($error == 4) {
         // echo "<script>
         // alert('pilih dulu dong gambarnya !');
         // </script>";
-        return 'nopoto.png';
+        return 'nopoto.jpg';
     }
 
     // cek ekstensi file
@@ -181,7 +181,7 @@ function ubah($data)
         return false;
     }
 
-    if ($gambar == 'nopoto.png') {
+    if ($gambar == 'nopoto.jpg') {
         $gambar = $gambar_lama;
     }
 
@@ -272,5 +272,3 @@ function register($data)
 
     return mysqli_affected_rows($conn);
 }
-
-

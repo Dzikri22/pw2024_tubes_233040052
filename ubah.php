@@ -12,7 +12,7 @@ require 'functions.php';
 $id = $_GET["id"];
 
 // query data produk berdasarkan id
-$wg = query("SELECT * FROM healthy WHERE id = $id")[0];
+$wagyu = query("SELECT * FROM healthy WHERE id = $id")[0];
 
 if (isset($_POST["submit"])) {
 
@@ -51,14 +51,14 @@ if (isset($_POST["submit"])) {
                     <h5 class="card-title text-center">Ubah data</h5>
                     <form action="" method="POST" enctype="multipart/form-data">
 
-                        <input type="hidden" name="id" value="<?= $wg["id"]; ?>">
+                        <input type="hidden" name="id" value="<?= $wagyu["id"]; ?>">
                         <div class="mb-3">
                             <label class="form-label">gambar</label>
-                            <input type="text" class="form-control" id="nama" name="produk" placeholder="Masukkan Nama Produk" value="<?= $wg["gambar"]; ?>">
+                            <input type="text" class="form-control" id="nama" name="produk" placeholder="Masukkan Nama Produk" value="<?= $wagyu["gambar"]; ?>">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">nama</label>
-                            <input type="text" class="form-control" id="harga" name="harga" placeholder="Masukkan Harga Produk" value="<?= $wg["nama"]; ?>">
+                            <input type="text" class="form-control" id="harga" name="harga" placeholder="Masukkan Harga Produk" value="<?= $wagyu["nama"]; ?>">
                         </div>
                         <div class="mb-3">
                             <label for="kategori_id" class="form-label">Daging Wagyu</label>
@@ -71,15 +71,15 @@ if (isset($_POST["submit"])) {
 
                         <div class="mb-3">
                             <label class="form-label">potongan</label>
-                            <textarea name="tdetail" id="" cols="30" rows="5" placeholder="Masukkan Detail Produk"> <?= $wg["potongan"]; ?>
+                            <textarea name="tdetail" id="" cols="30" rows="5" placeholder="Masukkan Detail Produk"> <?= $wagyu["potongan"]; ?>
                         </textarea>
                         </div>
                         <div class="mb-3">
-                            <input type="hidden" name="gambar_lama" value="<?= $wg["harga"]; ?>">
+                            <input type="hidden" name="gambar_lama" value="<?= $wagyu["harga"]; ?>">
                             <label class="form-label">Gambar
                                 <input type="file" class="gambar" onchange="previewImage()" name="gambar" placeholder="Masukkan Gambar Produk">
                             </label>
-                            <img src="img/<?= $wg["gambar"]; ?>" width="120" class="img-preview">
+                            <img src="img/<?= $wagyu["gambar"]; ?>" width="120" class="img-preview">
                         </div>
                         <button type=" submit" class="btn btn-dark justify-content-end" name="submit">Ubah Data !</button>
                     </form>

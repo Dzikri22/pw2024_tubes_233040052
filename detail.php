@@ -3,7 +3,7 @@ require 'functions.php';
 $conn =mysqli_connect('localhost', 'root', '', 'pw2024_tubes_233040052') or die ('koneksi ke DB gagal');
 
 $id = $_GET['id'];
-$wagyu= query("SELECT * FROM healthy id = $id")[0];
+$wagyu= query("SELECT * FROM healthy id =$id")[0];
 ?>
 
 
@@ -21,13 +21,13 @@ $wagyu= query("SELECT * FROM healthy id = $id")[0];
 <body>
     <a href="login.php" class="btn btn-dark" style="margin:px;">Back</a>
     <div class="d-flex justify-content-center">
-        <img src="img/<?= $wgy["gambar"]; ?>" width="300px" class="d-flex">
+        <img src="img/<?= $id["gambar"]; ?>" width="300px" class="d-flex">
     </div>
     <h3 style="text-align:center; margin-bottom: 20px;">Detail Daging</h3>
-    <h5 class="card-title text-center"><?= $wgy["nama"]; ?></h5>
+    <h5 class="card-title text-center"><?= $id["nama"]; ?></h5>
     <p style="text-align:center;"><?= $wgy["potongan"]; ?></p>
-    <p><?= $wgy["harga"]; ?></p>
-    <p><?= $wgy["detail"]; ?></p>
+    <p><?= $id["harga"]; ?></p>
+    <p><?= $id["detail"]; ?></p>
 
 
 
