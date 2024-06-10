@@ -45,7 +45,7 @@ if (isset($_POST['cari'])) {
           <div class="container-fluid justify-content-end">
               <a href="tambah.php" class="btn btn-light" style="margin-right: 10px;">Tambah</a>
               <a href="loguot.php" class="btn btn-light" >loguot</a>
-
+  
               <h3 class="navbar-brand" style="margin-right: 165px;">HEALTHY WAGYU</h3>
 
               <form action="" method="POST">

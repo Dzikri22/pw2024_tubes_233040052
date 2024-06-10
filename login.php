@@ -1,10 +1,10 @@
 <?php
-//    session_start();
+   session_start();
 
-//    if (isset($_SESSION['login'])) {
-//        header("Location: login.php");
-//        exit;
-//   }
+   if (isset($_SESSION['login'])) {
+       header("Location: index.php");
+       exit;
+  }
 
 require 'functions.php';
 $conn =mysqli_connect('localhost', 'root', '', 'pw2024_tubes_233040052') or die ('koneksi ke DB gagal');
