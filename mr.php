@@ -1,4 +1,5 @@
 <?php
+ob_start(); 
 require 'functions.php';
 
 $wagyu = query("SELECT * FROM healthy WHERE kategori_id=1");
