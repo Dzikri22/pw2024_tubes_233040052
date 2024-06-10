@@ -1,22 +1,22 @@
 <?php
-// session_start();
+      session_start();
 
-// if (!isset($_SESSION['login'])) {
-//     header("Location: login.php");
-//     exit;
-// }
+       if (!isset($_SESSION['login'])) {
+          header("Location: login.php");
+          exit;
+      }
 
 require 'functions.php';
 $id = $_GET["id"];
 
 if (hapus($id) > 0) {
     echo " <script>
-    alert ('Data Berhasil Dihapus !');
+    alert ('Akhirnya Data kehapus juga !');
     document.location.href = 'index.php';
     </script>";
 } else {
     echo " <script>
-    alert ('Data Gagal Dihapus !');
+    alert ('Aduh gagal dihapus !');
     document.location.href = 'index.php';
     </script>";
 }

@@ -1,10 +1,10 @@
 <?php
-// session_start();
+  session_start();
 
-// if (!isset($_SESSION['login'])) {
-//     header("Location: login.php");
-//     exit;
-// }
+  if (!isset($_SESSION['login'])) {
+      header("Location: login.php");
+      exit;
+ }
 
 require 'functions.php';
 
@@ -19,12 +19,12 @@ if (isset($_POST["submit"])) {
     // cek apakah data berhasil diubah atau tidak
     if (ubah($_POST) > 0) {
         echo " <script>
-        alert ('Data Berhasil Diubah !');
+        alert ('Data anda berhasil Diubah !');
         document.location.href = 'index.php';
         </script>";
     } else {
         echo " <script>
-        alert ('Data Gagal Diubah !');
+        alert ('Data Anda gagal di ubah !');
         document.location.href = 'index.php';
         </script>";
     }
@@ -43,19 +43,19 @@ if (isset($_POST["submit"])) {
 
 </head>
 
+<body style="background-color: #191970;">
+    
+
+
 <body>
     <div class="container">
         <div class="row justify-content-center mt-5">
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 35rem;">
                 <div class="card-body">
                     <h5 class="card-title text-center">Ubah data</h5>
                     <form action="" method="POST" enctype="multipart/form-data">
 
                         <input type="hidden" name="id" value="<?= $wagyu["id"]; ?>">
-                        <div class="mb-3">
-                            <label class="form-label">gambar</label>
-                            <input type="text" class="form-control" id="nama" name="produk" placeholder="Masukkan Nama Produk" value="<?= $wagyu["gambar"]; ?>">
-                        </div>
                         <div class="mb-3">
                             <label class="form-label">nama</label>
                             <input type="text" class="form-control" id="harga" name="harga" placeholder="Masukkan Harga Produk" value="<?= $wagyu["nama"]; ?>">
@@ -67,12 +67,17 @@ if (isset($_POST["submit"])) {
                                 <option value="2">Well Done</option>
                             </select>
                         </div>
-
-
+                        <div class="mb-3">
+                            <label class="form-label">harga</label>
+                            <input type="text" class="form-control" id="harga" name="harga" placeholder="Masukkan Harga Produk" value="<?= $wagyu["harga"]; ?>">
+                        </div>
                         <div class="mb-3">
                             <label class="form-label">potongan</label>
-                            <textarea name="tdetail" id="" cols="30" rows="5" placeholder="Masukkan Detail Produk"> <?= $wagyu["potongan"]; ?>
-                        </textarea>
+                            <input type="text" class="form-control" id="harga" name="potongan" placeholder="Masukkan potongan" value="<?= $wagyu["potongan"]; ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Detail Daging</label>
+                            <textarea name="detail" id="" cols="65" rows="5" placeholder="Masukkan Detail"></textarea>
                         </div>
                         <div class="mb-3">
                             <input type="hidden" name="gambar_lama" value="<?= $wagyu["harga"]; ?>">

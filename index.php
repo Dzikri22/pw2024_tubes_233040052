@@ -1,4 +1,14 @@
  <?php
+session_start();
+
+if (!isset($_SESSION['login'])) {
+    header("Location: login.php");
+    exit;
+}
+
+
+
+
 
 require 'functions.php';
 $conn =mysqli_connect('localhost', 'root', '', 'pw2024_tubes_233040052') or die ('koneksi ke DB gagal');
@@ -34,7 +44,7 @@ if (isset($_POST['cari'])) {
       <nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top" style="background-color: #2a2a2a" style="margin-top:5px;">
           <div class="container-fluid justify-content-end">
               <a href="tambah.php" class="btn btn-light" style="margin-right: 10px;">Tambah</a>
-              <a href="loguot.php" class="btn btn-light" >loguot  </a>
+              <a href="loguot.php" class="btn btn-light" >loguot</a>
 
               <h3 class="navbar-brand" style="margin-right: 165px;">HEALTHY WAGYU</h3>
 
@@ -57,13 +67,13 @@ if (isset($_POST['cari'])) {
                             <h5 class="card-title"><?= $wgy["nama"]; ?></h5>
                             <p><?= $wgy["potongan"]; ?></p>
                             <p><?= $wgy["harga"]; ?></p>
-                            <a href="detail.php?id=<?= $wgy["id"]; ?>" class="btn btn-dark mb-3">detail daging</a> <br>
-                            <a href="ubah.php?id=<?= $wgy["id"]; ?>" class="btn btn-primary">Ubah</a> <a href="delete.php" onclick="return confirm('Serius Mau Dihapus ?')" class="btn btn-danger">delete</a>
+                            <a href="detail.php?id=<?= $wgy['id']; ?>" class="btn btn-dark mb-3">detail daging</a> <br>
+                            <a href="ubah.php?id=<?= $wgy['id']; ?>" class="btn btn-primary">ubah</a> <a href="delete.php?id=<?= $wgy['id']; ?>" onclick="return confirm('Hapus mulu Kapan Disimpen nya ?')" class="btn btn-danger">delete</a>
                             <br>
                             <p class="btn btn-dark mt-2"><?= $wgy["kategori_id"]; ?></p>
 
                         </div>
-                    </div>
+                    </div> 
                 </div>
             <?php endforeach; ?>
         </div>
@@ -72,7 +82,7 @@ if (isset($_POST['cari'])) {
 
 
 
-
+<script src="js/script.js"></script>
 
 
 

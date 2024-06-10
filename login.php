@@ -1,10 +1,10 @@
 <?php
-// session_start();
+//    session_start();
 
-// if (isset($_SESSION['login'])) {
-//     header("Location: index.php");
-//     exit;
-// }
+//    if (isset($_SESSION['login'])) {
+//        header("Location: login.php");
+//        exit;
+//   }
 
 require 'functions.php';
 $conn =mysqli_connect('localhost', 'root', '', 'pw2024_tubes_233040052') or die ('koneksi ke DB gagal');
@@ -35,6 +35,7 @@ if (isset($_POST['cari'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 
 
     <!-- link google font -->
@@ -47,19 +48,33 @@ if (isset($_POST['cari'])) {
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
+
+    
 </head>
 
+
+    
+
+    
+
+
 <body style="background-color: #B0C4DE;">
-    
-
-    
-
-
-<body>
 
     <nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top" style="background-color:#2a2a2a">
         <div class="container-fluid">
             <h3 class="navbar-brand">Healthy Wagyu</h3>
+            <li class="nav-item navbar-nav me-auto mb-2 mb-lg-0">
+                <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item dropdown navbar-nav me-auto mb-2 mb-lg-0">
+                <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Tingkat Kematangan Daging
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="mr.php">Medium Rare</a></li>
+                    <li><a class="dropdown-item" href="wd.php">Well Done</a></li>
+                </ul>
+            </li>
             <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
             <form action="" method="POST" class="d-flex">
                 <input type="text" name="keywoard" placeholder="Masukkan Pencarian..." autocomplete="off" class="keyword form-control me-2">
@@ -71,7 +86,7 @@ if (isset($_POST['cari'])) {
     </nav>
 
     <h3 class="text-center mb-4 fw-bold" style="padding-top:100px;">Product</h3>
-    <div class="container ">
+    <div class="container " class=>
 
         <div class="row">
             <?php foreach ($wagyu as $wgy) : ?>
@@ -81,7 +96,8 @@ if (isset($_POST['cari'])) {
                         <div class=" card-body text-center">
                             <h5 class="card-title"><?= $wgy["nama"]; ?></h5>
                             <p><?= $wgy["potongan"]; ?></p>
-                            <a href="detail.php?id=<?= $wgy["harga"]; ?>" class="btn btn-dark mb-3">detail daging</a> <br>
+                            <p><?= $wgy["harga"]; ?></p>
+                            <a href="detail.php?id=<?= $wgy["id"]; ?>" class="btn btn-dark mb-3">detail daging</a> <br>
                         </div>
                     </div>
                 </div>
@@ -98,7 +114,7 @@ if (isset($_POST['cari'])) {
 
 
 
-    <div class="container" style="background-color: rgba(201, 76, 76, 0.3);">
+    <div style="background-color: #FFDEAD;">
         <div class="row justify-content-center mt-5" style="padding-top:80px; padding-bottom:80px;">
 
             <div class="card" style="width: 19rem;">

@@ -10,9 +10,9 @@ function koneksi()
 function query($sql) {
 
     // koneksi ke Database
-    $db= koneksi ();
+    $conn= koneksi ();
     // lakukan query ke tabel mahasiswa
-$result = mysqli_query($db,$sql) or die (mysqli_error($db));
+$result = mysqli_query($conn,$sql) or die (mysqli_error($conn));
     // menyiapkan data mahasiswa (fetch)
 $rows = [];
 
@@ -58,7 +58,9 @@ function hapus($id)
 
     // menghapus gambar di folder img
     $wgy = query("SELECT * FROM healthy WHERE id = $id")[0];
-
+    if ($wgy['gambar'] != 'nopoto.jpg') {
+        unlink('img/' . $wgy['gambar']);
+    }
 
     mysqli_query($conn, "DELETE FROM healthy WHERE id = $id") or die(mysqli_error($conn));
 
@@ -69,13 +71,13 @@ function hapus($id)
 
 
 function login($data) {
-    global $conn;
+    $conn = koneksi();
 
     $username = htmlspecialchars($data["username"]);
     $password = htmlspecialchars($data["password"]);
     
     // cek dulu username nya
-    if ($user = query("SELECT * FROM healthy WHERE username = '$username'")[0]) {
+    if($user = query("SELECT * FROM user WHERE username = '$username'")[0]) {
         if(password_verify($password, $user['password'])) {
 
             $_SESSION['login'] = true;
@@ -122,20 +124,20 @@ function upload()
     }
 
     // cek ekstensi file
-    $daftar_gambar = ['jpg', 'jpeg', 'png'];
+    $daftar_gambar = ['jpg', 'jpeg', 'png', 'webp'];
     $ekstensi_file = explode('.', $nama_file);
     $ekstensi_file = strtolower(end($ekstensi_file));
     if (!in_array($ekstensi_file, $daftar_gambar)) {
         echo "<script>
-        alert('itu bukan gambar woi !');
+        alert(' malah masukin yang lain !');
         </script>";
         return false;
     }
 
     // cek type file
-    if ($tipe_file != 'image/jpeg' && $tipe_file != 'image/png') {
+    if ($tipe_file != 'image/jpeg' && $tipe_file != 'image/png' && $tipe_file != 'image/webp') {
         echo "<script>
-        alert('itu bukan gambar woi !');
+        alert(' malah masukin yang lain !');
         </script>";
         return false;
     }
@@ -144,7 +146,7 @@ function upload()
     // max 5mb ==== 5jt bite
     if ($ukuran_file > 5000000) {
         echo "<script>
-        alert('ukurannya kegedean bro !');
+        alert('gede banget bro ukurannya !');
         </script>";
         return false;
     }
